@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Database</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #1977cc;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <br>
+    <h2 style="text-align: center;">Customer Database</h2>
+    <br>
+
+    <table style="width: 60%; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Serial No.</th>
+                <th>Phone Number</th>
+                <th>Spending Score</th>
+                <th>Annual Income</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for itr in customerData %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{itr.phoneNumber}}</td>
+                <td>{{itr.spendingScore}}</td>
+                <td>{{itr.annualIncome}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>
