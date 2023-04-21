@@ -9,18 +9,21 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
+
+env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-oqf9b6rexq9m95ftbjf#nz9-j$kc0*4iag*n=chv13b=f8)6$&'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ttlProject',  # [Database Name]
         'USER': 'postgres',
-        'PASSWORD': 'ankit27112002',  # [Password of Postgresql(PGAdmin)]
+        'PASSWORD': env('POTGRES_PASS'),  # [Password of Postgresql(PGAdmin)]
         'HOST': 'localhost',
         'PORT': '1727',  # [PORT used in postgresql]
     }
