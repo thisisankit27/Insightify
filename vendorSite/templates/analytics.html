@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Analytics</title>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <br>
+    <h2 style="text-align: center;">Customer Analytics</h2>
+    <br>
+
+    <div style="display: flex; justify-content: center;">
+        <img src="data:image/png;base64,{{ data }}" alt="" height="450" width="450">
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <h3>Chosing the elbow point, beyond which there is no significant drop(elbow point) Here it would be '5' Number
+            of clusters</h3>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <form action="kMeans" method="POST">
+            {% csrf_token %}
+            <!-- your form code here -->
+            <label for="user-id">Select The Number Of Clusters:</label>
+            <input type="number" name="numberOfCluster"
+                style="padding: 8px; margin-left: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            <input type="submit" value="Submit"
+                style="padding: 8px 16px; background-color: #4CAF50; color: #fff; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">
+        </form>
+    </div>
+</body>
+
+</html>
