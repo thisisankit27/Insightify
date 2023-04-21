@@ -23,7 +23,8 @@ env.read_env()
 
 def analytics(request):
     # engine = pg.connect(dbname='ttlProject', user='postgres', host='localhost', port='1727', password=env('POSTGRES_PASS'))
-    engine = create_engine('postgresql://postgres:ankit27112002@localhost:1727/ttlProject')
+    engineURL = 'postgresql://postgres:'+str(env('POSTGRES_PASS'))+'@localhost:1727/ttlProject'
+    engine = create_engine(engineURL)
 
     # customer_data = pd.read_csv('templates/Kaggle Data/Mall_Customers.csv')
     sqlQuery = "SELECT * FROM public.clustering_customerbill WHERE vendor_id = "+str(request.user.id)+";"
